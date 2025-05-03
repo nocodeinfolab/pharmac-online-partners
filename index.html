@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Trusted Partners | Pharmac-Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3a7bd5;
+            --primary-dark: #2a5da8;
+            --secondary: #00d2ff;
+            --accent: #e6e9ed;
+            --text: #2d3436;
+            --light-text: #636e72;
+            --white: #ffffff;
+            --light-bg: #f5f7fa;
+            --gold: #fdcb6e;
+            --radius: 16px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .onboarding-container {
+            max-width: 100%;
+            padding: 2rem 1rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--light-text);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .partners-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners-scroll {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 0;
+            animation: scroll 30s linear infinite;
+            width: calc(250px * 14);
+        }
+
+        .partner-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            min-width: 220px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        .partner-name::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(58, 123, 213, 0.3);
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(58, 123, 213, 0.4);
+        }
+
+        .cta-button i {
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(3px);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-250px * 7));
+            }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+                padding: 0 1rem;
+            }
+            
+            .partner-card {
+                min-width: 180px;
+                padding: 1.5rem 1rem;
+            }
+            
+            .partner-name {
+                font-size: 1rem;
+            }
+            
+            .partners-scroll {
+                gap: 1rem;
+                width: calc(180px * 14);
+            }
+            
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-180px * 7));
+                }
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .title {
+                font-size: 1.3rem;
+            }
+            
+            .partner-card {
+                min-width: 160px;
+            }
+            
+            .partners-scroll {
+                width: calc(160px * 14);
+            }
+            
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-160px * 7));
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="onboarding-container">
+        <div class="header">
+            <div class="logo">Pharmac-Online</div>
+            <h1 class="title">Our Trusted Pharmacy Partners</h1>
+            <p class="subtitle">We collaborate with the most reputable pharmacies to ensure you receive genuine medications with the highest standards of quality and safety.</p>
+        </div>
+        
+        <div class="partners-container">
+            <div class="partners-scroll">
+                <!-- First set of partners (will be duplicated for infinite scroll) -->
+                <div class="partner-card">
+                    <div class="partner-name">MediCare Prime</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Wellness Pharma</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Vitality Rx</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">PureLife Pharmacies</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">HealthPlus Solutions</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">CareFirst Pharmacy</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Elite Meds</div>
+                </div>
+                
+                <!-- Duplicate set for infinite scroll -->
+                <div class="partner-card">
+                    <div class="partner-name">MediCare Prime</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Wellness Pharma</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Vitality Rx</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">PureLife Pharmacies</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">HealthPlus Solutions</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">CareFirst Pharmacy</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Elite Meds</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <button class="cta-button">
+            Continue to App
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pause animation on hover
+            const scrollContainer = document.querySelector('.partners-scroll');
+            scrollContainer.addEventListener('mouseenter', () => {
+                scrollContainer.style.animationPlayState = 'paused';
+            });
+            
+            scrollContainer.addEventListener('mouseleave', () => {
+                scrollContainer.style.animationPlayState = 'running';
+            });
+            
+            // CTA button functionality
+            const ctaButton = document.querySelector('.cta-button');
+            ctaButton.addEventListener('click', () => {
+                // Replace with your actual navigation logic
+                alert('Proceeding to the main application...');
+                // window.location.href = 'main-app.html';
+            });
+            
+            // Simulate pagination dots (for demonstration)
+            const dots = document.querySelectorAll('.pagination-dot');
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    dots.forEach(d => d.classList.remove('active'));
+                    dot.classList.add('active');
+                });
+                
+                // Set first dot as active by default
+                if (index === 0) dot.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
