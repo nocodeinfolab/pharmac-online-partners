@@ -34,18 +34,17 @@
             color: var(--text);
             height: 100vh;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .onboarding-container {
             max-width: 100%;
             padding: 1rem;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             text-align: center;
+            height: auto;
         }
 
         .header {
@@ -91,34 +90,33 @@
             line-height: 1.5;
         }
 
-        .partners-container {
+        .partners-track {
             width: 100%;
-            max-width: 800px;
-            margin: 1rem auto;
-            position: relative;
             overflow: hidden;
-            height: auto;
+            position: relative;
+            margin: 1.5rem 0;
+            height: 100px;
         }
 
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        .partners-inner {
+            display: flex;
+            position: absolute;
             gap: 1rem;
-            padding: 0.5rem;
-            width: 100%;
+            animation: scroll 20s linear infinite;
+            padding: 0 1rem;
         }
 
         .partner-card {
             background: var(--white);
             border-radius: var(--radius);
-            padding: 1.2rem 0.8rem;
+            padding: 1rem 1.5rem;
             box-shadow: var(--shadow);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            flex-shrink: 0;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            min-height: 80px;
+            height: 80px;
         }
 
         .partner-name {
@@ -126,6 +124,7 @@
             font-weight: 600;
             color: var(--primary-dark);
             position: relative;
+            white-space: nowrap;
         }
 
         .partner-name::before {
@@ -139,6 +138,11 @@
             background: var(--gold);
         }
 
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
         @media (max-width: 768px) {
             .logo {
                 font-size: 1.6rem;
@@ -150,17 +154,11 @@
             
             .subtitle {
                 font-size: 0.85rem;
-                padding: 0 1rem;
-            }
-            
-            .partners-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 0.8rem;
             }
             
             .partner-card {
-                padding: 1rem 0.5rem;
-                min-height: 70px;
+                padding: 0.8rem 1.2rem;
+                height: 70px;
             }
             
             .partner-name {
@@ -181,8 +179,13 @@
                 font-size: 0.8rem;
             }
             
-            .partners-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .partners-inner {
+                gap: 0.8rem;
+            }
+            
+            .partner-card {
+                padding: 0.6rem 1rem;
+                height: 60px;
             }
         }
     </style>
@@ -195,15 +198,43 @@
             <p class="subtitle">Collaborating with reputable pharmacies to ensure quality medications</p>
         </div>
         
-        <div class="partners-container">
-            <div class="partners-grid">
+        <div class="partners-track">
+            <div class="partners-inner">
+                <!-- Original Set -->
                 <div class="partner-card">
                     <div class="partner-name">MediCare Prime</div>
                 </div>
                 <div class="partner-card">
                     <div class="partner-name">Wellness Pharma</div>
                 </div>
-                <div class="partner-name">Vitality Rx</div>
+                <div class="partner-card">
+                    <div class="partner-name">Vitality Rx</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">PureLife Pharmacies</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">HealthPlus Solutions</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">CareFirst Pharmacy</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Elite Meds</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Prime Wellness</div>
+                </div>
+                
+                <!-- Duplicate Set for Seamless Looping -->
+                <div class="partner-card">
+                    <div class="partner-name">MediCare Prime</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Wellness Pharma</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-name">Vitality Rx</div>
                 </div>
                 <div class="partner-card">
                     <div class="partner-name">PureLife Pharmacies</div>
@@ -223,5 +254,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pause animation on hover
+            const partnersInner = document.querySelector('.partners-inner');
+            partnersInner.addEventListener('mouseenter', () => {
+                partnersInner.style.animationPlayState = 'paused';
+            });
+            
+            partnersInner.addEventListener('mouseleave', () => {
+                partnersInner.style.animationPlayState = 'running';
+            });
+        });
+    </script>
 </body>
 </html>
